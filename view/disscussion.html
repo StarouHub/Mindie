@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Comment intégrer TensorFlow - Kernel</title>
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Lien vers le fichier CSS séparé -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="header d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo">
+        <i class="bi bi-hexagon-fill"></i> Kernel
+      </a>
+
+      <nav class="navmenu">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="projets-list.html">Projets</a></li>
+          <li><a href="evenements-list.html">Événements</a></li>
+          <li><a href="forum.html" style="color: var(--accent-color);">Forum</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn-getstarted" href="#start">Commencer</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb mt-4 p-3 rounded">
+      <a href="index.html">Accueil</a> &raquo; <span>Intégrer TensorFlow</span>
+    </div>
+
+    <section class="discussion-header">
+      <h1 class="discussion-title">Comment intégrer TensorFlow</h1>
+      <div class="discussion-meta">
+        <div class="meta-item">Publié le <strong>10 novembre 2025</strong></div>
+        <div class="meta-item">Par <strong>Admin</strong></div>
+        <div class="meta-item"><span class="tag">Machine Learning</span><span class="tag">TensorFlow</span></div>
+      </div>
+    </section>
+
+    <article class="post-card">
+      <div class="post-header">
+        <div class="user-avatar">K</div>
+        <div class="user-info">
+          <div class="user-name">Kernel Team <span class="user-badge">Auteur</span></div>
+          <div class="post-time">Il y a 2 jours</div>
+        </div>
+      </div>
+
+      <div class="post-content">
+        <p>Dans cet article on va voir comment intégrer TensorFlow dans un projet web et localement sur votre machine.</p>
+
+        <h5>Prérequis</h5>
+        <ul>
+          <li>Python 3.8+</li>
+          <li>Un environnement virtuel (venv)</li>
+          <li>pip à jour</li>
+        </ul>
+
+        <h5>Installation</h5>
+        <div class="code-block">
+pip install --upgrade pip
+python -m venv venv
+source venv/bin/activate  # sous macOS / Linux
+venv\Scripts\activate     # sous Windows
+pip install tensorflow
+        </div>
+
+        <h5>Exemple minimal</h5>
+        <div class="code-block">
+import tensorflow as tf
+
+model = tf.keras.Sequential([
+  tf.keras.layers.Dense(10, activation='relu', input_shape=(5,)),
+  tf.keras.layers.Dense(1)
+])
+
+model.compile(optimizer='adam', loss='mse')
+print(model.summary())
+        </div>
+
+        <p>…suite de l'article ici…</p>
+      </div>
+
+      <div class="post-actions">
+        <button class="action-btn"><i class="bi bi-hand-thumbs-up"></i> J'aime</button>
+        <button class="action-btn"><i class="bi bi-chat-left-text"></i> Répondre</button>
+        <button class="action-btn solved"><i class="bi bi-check-circle"></i> Résolu</button>
+      </div>
+    </article>
+
+    <section class="reply-form">
+      <h4>Répondre</h4>
+      <textarea class="form-control" rows="5" placeholder="Votre réponse..."></textarea>
+      <div class="mt-3">
+        <button class="btn-submit">Publier la réponse</button>
+      </div>
+    </section>
+  </main>
+
+  <aside class="container mt-4">
+    <div class="sidebar-card">
+      <div class="sidebar-title"><i class="bi bi-journal-text"></i> Sujets liés</div>
+      <div class="related-topic">
+        <div class="related-topic-title">Introduction à Keras</div>
+        <div class="related-topic-meta">12 réponses • 3 jours</div>
+      </div>
+      <div class="related-topic">
+        <div class="related-topic-title">Déploiement modèle</div>
+        <div class="related-topic-meta">5 réponses • 1 semaine</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Optional: bootstrap JS (si besoin de composants JS) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

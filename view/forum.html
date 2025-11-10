@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Forum - Kernel</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Bootstrap (CDN or in your assets folder) -->
+  <link href="../../assets/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="../../assets/forum.css" rel="stylesheet">
+  <style>
+    /* Header container fix for button alignment */
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      padding-right: 32px;
+      padding-left: 32px;
+    }
+    .navmenu {
+      margin-right: 32px;
+    }
+    .btn-getstarted {
+      align-self: center;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="bi bi-hexagon-fill"></i> Kernel
+      </a>
+      <nav class="navmenu">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="#">Projets</a></li>
+          <li><a href="#">Événements</a></li>
+          <li><a href="#" style="color: var(--accent-color);">Forum</a></li>
+          <li><a href="#">Profil</a></li>
+        </ul>
+      </nav>
+      <a class="btn-getstarted" href="#">Connexion</a>
+    </div>
+  </header>
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <h1><i class="bi bi-chat-dots"></i> Forum Communautaire</h1>
+      <p>Échangez avec la communauté des innovateurs, posez vos questions et partagez vos connaissances</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-lg-3">
+        <div class="forum-sidebar">
+          <button class="btn-new-topic">
+            <i class="bi bi-plus-circle me-2"></i> Nouveau Sujet
+          </button>
+          <h5 class="sidebar-title">
+            <i class="bi bi-filter"></i> Catégories
+          </h5>
+          <div class="category-item active">
+            <span><i class="bi bi-circle-fill me-2" style="font-size: 8px;"></i> Toutes</span>
+            <span class="category-badge">247</span>
+          </div>
+          <div class="category-item">
+            <span><i class="bi bi-circle-fill me-2" style="font-size: 8px; color: #2563EB;"></i> Intelligence Artificielle</span>
+            <span class="category-badge">42</span>
+          </div>
+          <div class="category-item">
+            <span><i class="bi bi-circle-fill me-2" style="font-size: 8px; color: #7C3AED;"></i> IoT & Robotique</span>
+            <span class="category-badge">38</span>
+          </div>
+          <div class="category-item">
+            <span><i class="bi bi-circle-fill me-2" style="font-size: 8px; color: #F59E0B;"></i> Blockchain</span>
+            <span class="category-badge">29</span>
+          </div>
+          <div class="category-item">
+            <span><i class="bi bi-circle-fill me-2" style="font-size: 8px; color: #10B981;"></i> Dev Web/Mobile</span>
+            <span class="category-badge">56</span>
+          </div>
+          <div class="category-item">
+            <span><i class="bi bi-circle-fill me-2" style="font-size: 8px; color: #EF4444;"></i> Financement</span>
+            <span class="category-badge">33</span>
+          </div>
+          <div class="category-item">
+            <span><i class="bi bi-circle-fill me-2" style="font-size: 8px; color: #8B5CF6;"></i> Design & UX</span>
+            <span class="category-badge">24</span>
+          </div>
+          <div class="category-item">
+            <span><i class="bi bi-circle-fill me-2" style="font-size: 8px; color: #06B6D4;"></i> Questions Générales</span>
+            <span class="category-badge">25</span>
+          </div>
+        </div>
+        <div class="forum-sidebar">
+          <h5 class="sidebar-title">
+            <i class="bi bi-fire"></i> Top Contributeurs
+          </h5>
+          <div class="d-flex align-items-center mb-3">
+            <div class="user-avatar" style="width: 40px; height: 40px; font-size: 14px;">AM</div>
+            <div class="ms-3 flex-1">
+              <div style="font-weight: 600; color: var(--dark-color);">Ahmed Mejri</div>
+              <div style="font-size: 12px; color: #6B7280;">342 contributions</div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mb-3">
+            <div class="user-avatar" style="width: 40px; height: 40px; font-size: 14px; background: linear-gradient(135deg, #7C3AED, #F59E0B);">SK</div>
+            <div class="ms-3 flex-1">
+              <div style="font-weight: 600; color: var(--dark-color);">Sara Khalil</div>
+              <div style="font-size: 12px; color: #6B7280;">289 contributions</div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center">
+            <div class="user-avatar" style="width: 40px; height: 40px; font-size: 14px; background: linear-gradient(135deg, #F59E0B, #EF4444);">MB</div>
+            <div class="ms-3 flex-1">
+              <div style="font-weight: 600; color: var(--dark-color);">Mohamed Ben Ali</div>
+              <div style="font-size: 12px; color: #6B7280;">267 contributions</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Main Content -->
+      <div class="col-lg-9">
+        <div class="search-box">
+          <input type="text" placeholder="Rechercher dans le forum...">
+          <i class="bi bi-search"></i>
+        </div>
+        <div class="filter-tabs">
+          <button class="filter-tab active">Récents</button>
+          <button class="filter-tab">Populaires</button>
+          <button class="filter-tab">Non résolus</button>
+          <button class="filter-tab">Mes discussions</button>
+        </div>
+        <!-- Forum Topics -->
+        <div class="topic-card">
+          <div class="topic-header">
+            <div class="user-avatar">AM</div>
+            <div class="topic-content">
+              <div class="topic-title">
+                Comment intégrer TensorFlow dans mon app mobile ?
+                <span class="badge-hot">HOT</span>
+              </div>
+              <div class="topic-meta">
+                Par <strong>Ahmed Mejri</strong> • il y a 2 heures • dans <strong>Intelligence Artificielle</strong>
+              </div>
+              <div class="topic-description">
+                Je travaille sur une application mobile de reconnaissance d'images et je cherche la meilleure approche pour intégrer TensorFlow Lite. Quelqu'un a de l'expérience avec ça ?
+              </div>
+              <div class="topic-tags">
+                <span class="tag">#TensorFlow</span>
+                <span class="tag">#Mobile</span>
+                <span class="tag">#IA</span>
+              </div>
+              <div class="topic-stats">
+                <span class="stat-item"><i class="bi bi-chat-fill"></i> 24 réponses</span>
+                <span class="stat-item"><i class="bi bi-eye-fill"></i> 342 vues</span>
+                <span class="stat-item"><i class="bi bi-hand-thumbs-up-fill"></i> 18 likes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-card">
+          <div class="topic-header">
+            <div class="user-avatar" style="background: linear-gradient(135deg, #7C3AED, #F59E0B);">SK</div>
+            <div class="topic-content">
+              <div class="topic-title">
+                Besoin de conseils pour lever des fonds
+                <span class="badge-solved">RÉSOLU</span>
+              </div>
+              <div class="topic-meta">
+                Par <strong>Sara Khalil</strong> • il y a 5 heures • dans <strong>Financement</strong>
+              </div>
+              <div class="topic-description">
+                Je cherche des investisseurs pour mon projet IoT. Quelles sont les meilleures stratégies pour pitcher et convaincre ? Des retours d'expérience ?
+              </div>
+              <div class="topic-tags">
+                <span class="tag">#Financement</span>
+                <span class="tag">#Pitch</span>
+                <span class="tag">#Investisseurs</span>
+              </div>
+              <div class="topic-stats">
+                <span class="stat-item"><i class="bi bi-chat-fill"></i> 15 réponses</span>
+                <span class="stat-item"><i class="bi bi-eye-fill"></i> 201 vues</span>
+                <span class="stat-item"><i class="bi bi-hand-thumbs-up-fill"></i> 12 likes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-card">
+          <div class="topic-header">
+            <div class="user-avatar" style="background: linear-gradient(135deg, #F59E0B, #EF4444);">MB</div>
+            <div class="topic-content">
+              <div class="topic-title">
+                Équipe recherchée pour Hackathon Blockchain
+              </div>
+              <div class="topic-meta">
+                Par <strong>Mohamed Ben Ali</strong> • hier • dans <strong>Blockchain</strong>
+              </div>
+              <div class="topic-description">
+                Je participe au Hackathon national de Blockchain le mois prochain et je cherche des développeurs et un designer pour former une équipe solide !
+              </div>
+              <div class="topic-tags">
+                <span class="tag">#Hackathon</span>
+                <span class="tag">#Blockchain</span>
+                <span class="tag">#Équipe</span>
+              </div>
+              <div class="topic-stats">
+                <span class="stat-item"><i class="bi bi-chat-fill"></i> 8 réponses</span>
+                <span class="stat-item"><i class="bi bi-eye-fill"></i> 156 vues</span>
+                <span class="stat-item"><i class="bi bi-hand-thumbs-up-fill"></i> 7 likes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-card">
+          <div class="topic-header">
+            <div class="user-avatar" style="background: linear-gradient(135deg, #10B981, #06B6D4);">LB</div>
+            <div class="topic-content">
+              <div class="topic-title">
+                Meilleures pratiques UX pour apps IoT
+              </div>
+              <div class="topic-meta">
+                Par <strong>Leila Ben Salah</strong> • il y a 2 jours • dans <strong>Design & UX</strong>
+              </div>
+              <div class="topic-description">
+                Je conçois une interface pour contrôler des objets connectés. Quelles sont vos recommandations en termes d'ergonomie et d'expérience utilisateur ?
+              </div>
+              <div class="topic-tags">
+                <span class="tag">#UX</span>
+                <span class="tag">#IoT</span>
+                <span class="tag">#Design</span>
+              </div>
+              <div class="topic-stats">
+                <span class="stat-item"><i class="bi bi-chat-fill"></i> 11 réponses</span>
+                <span class="stat-item"><i class="bi bi-eye-fill"></i> 178 vues</span>
+                <span class="stat-item"><i class="bi bi-hand-thumbs-up-fill"></i> 9 likes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-card">
+          <div class="topic-header">
+            <div class="user-avatar" style="background: linear-gradient(135deg, #8B5CF6, #EC4899);">RK</div>
+            <div class="topic-content">
+              <div class="topic-title">
+                Comparaison React Native vs Flutter 2024
+              </div>
+              <div class="topic-meta">
+                Par <strong>Rania Kacem</strong> • il y a 3 jours • dans <strong>Dev Web/Mobile</strong>
+              </div>
+              <div class="topic-description">
+                Je dois choisir entre React Native et Flutter pour mon nouveau projet. Quels sont les avantages et inconvénients de chacun d'après votre expérience ?
+              </div>
+              <div class="topic-tags">
+                <span class="tag">#ReactNative</span>
+                <span class="tag">#Flutter</span>
+                <span class="tag">#Mobile</span>
+              </div>
+              <div class="topic-stats">
+                <span class="stat-item"><i class="bi bi-chat-fill"></i> 19 réponses</span>
+                <span class="stat-item"><i class="bi bi-eye-fill"></i> 289 vues</span>
+                <span class="stat-item"><i class="bi bi-hand-thumbs-up-fill"></i> 14 likes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination">
+          <a href="#" class="page-link"><i class="bi bi-chevron-left"></i></a>
+          <a href="#" class="page-link active">1</a>
+          <a href="#" class="page-link">2</a>
+          <a href="#" class="page-link">3</a>
+          <a href="#" class="page-link">4</a>
+          <a href="#" class="page-link">5</a>
+          <a href="#" class="page-link"><i class="bi bi-chevron-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
