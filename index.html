@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindie - Plateforme de Défis Gamifiée</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ============ HEADER ============ -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">🎯</div>
+                <div class="logo-text">Mindie</div>
+            </div>
+            <nav class="nav-tabs">
+                <button class="nav-tab active" onclick="showPage('dashboard')">Dashboard</button>
+                <button class="nav-tab" onclick="showPage('challenges')">Mes Défis</button>
+                <button class="nav-tab" onclick="showPage('leaderboard')">Leaderboard</button>
+                <button class="nav-tab" onclick="showPage('profile')">Profil</button>
+                <button class="nav-tab" onclick="showPage('badges')">Badges</button>
+                <button class="nav-tab" onclick="showPage('stats')">Statistiques</button>
+            </nav>
+            <div class="user-menu">
+                <div class="user-avatar">JD</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <div class="main-container">
+
+        <!-- ============ DASHBOARD PAGE ============ -->
+        <div id="dashboard" class="page active">
+            <div class="section-title">Vue d'ensemble</div>
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <h3>Points Totaux</h3>
+                        <div class="stat-value">2,450</div>
+                    </div>
+                    <div class="stat-icon blue">⭐</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <h3>Défis Complétés</h3>
+                        <div class="stat-value">24</div>
+                    </div>
+                    <div class="stat-icon green">✓</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <h3>Badges Débloqués</h3>
+                        <div class="stat-value">12</div>
+                    </div>
+                    <div class="stat-icon orange">🏆</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <div class="section-title">Défis en cours</div>
+                <div class="challenges-grid" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
+                    <div class="challenge-card">
+                        <div class="challenge-header">
+                            <span class="challenge-level easy">Facile</span>
+                            <div class="challenge-title">Premiers Pas</div>
+                            <div class="challenge-description">Complétez votre première tâche</div>
+                        </div>
+                        <div class="challenge-body">
+                            <div class="challenge-points">
+                                <span class="points-label">Récompense</span>
+                                <span class="points-value">+50 pts</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%;"></div>
+                            </div>
+                            <div class="progress-text">75% complété</div>
+                        </div>
+                    </div>
+                    <div class="challenge-card">
+                        <div class="challenge-header">
+                            <span class="challenge-level medium">Moyen</span>
+                            <div class="challenge-title">Grimpeur</div>
+                            <div class="challenge-description">Atteignez 500 points</div>
+                        </div>
+                        <div class="challenge-body">
+                            <div class="challenge-points">
+                                <span class="points-label">Récompense</span>
+                                <span class="points-value">+150 pts</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 45%;"></div>
+                            </div>
+                            <div class="progress-text">45% complété</div>
+                        </div>
+                    </div>
+                    <div class="challenge-card">
+                        <div class="challenge-header">
+                            <span class="challenge-level hard">Difficile</span>
+                            <div class="challenge-title">Maître</div>
+                            <div class="challenge-description">Débloquez 20 badges</div>
+                        </div>
+                        <div class="challenge-body">
+                            <div class="challenge-points">
+                                <span class="points-label">Récompense</span>
+                                <span class="points-value">+300 pts</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%;"></div>
+                            </div>
+                            <div class="progress-text">60% complété</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ CHALLENGES PAGE ============ -->
+        <div id="challenges" class="page">
+            <div class="section-title">Mes Défis</div>
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <span class="challenge-level easy">Facile</span>
+                        <div class="challenge-title">Premiers Pas</div>
+                        <div class="challenge-description">Complétez votre première tâche</div>
+                    </div>
+                    <div class="challenge-body">
+                        <div class="challenge-points">
+                            <span class="points-label">Récompense</span>
+                            <span class="points-value">+50 pts</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%;"></div>
+                        </div>
+                        <div class="progress-text">75% complété</div>
+                        <button class="btn btn-primary" style="margin-top: 12px; width: 100%;">Continuer</button>
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <span class="challenge-level easy">Facile</span>
+                        <div class="challenge-title">Première Victoire</div>
+                        <div class="challenge-description">Gagnez votre premier défi</div>
+                    </div>
+                    <div class="challenge-body">
+                        <div class="challenge-points">
+                            <span class="points-label">Récompense</span>
+                            <span class="points-value">+75 pts</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                        <div class="progress-text">100% complété</div>
+                        <button class="btn btn-primary" style="margin-top: 12px; width: 100%;">Réclamer</button>
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <span class="challenge-level medium">Moyen</span>
+                        <div class="challenge-title">Grimpeur</div>
+                        <div class="challenge-description">Atteignez 500 points</div>
+                    </div>
+                    <div class="challenge-body">
+                        <div class="challenge-points">
+                            <span class="points-label">Récompense</span>
+                            <span class="points-value">+150 pts</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 45%;"></div>
+                        </div>
+                        <div class="progress-text">45% complété</div>
+                        <button class="btn btn-primary" style="margin-top: 12px; width: 100%;">Continuer</button>
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <span class="challenge-level medium">Moyen</span>
+                        <div class="challenge-title">Collecteur</div>
+                        <div class="challenge-description">Débloquez 5 badges</div>
+                    </div>
+                    <div class="challenge-body">
+                        <div class="challenge-points">
+                            <span class="points-label">Récompense</span>
+                            <span class="points-value">+120 pts</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%;"></div>
+                        </div>
+                        <div class="progress-text">80% complété</div>
+                        <button class="btn btn-primary" style="margin-top: 12px; width: 100%;">Continuer</button>
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <span class="challenge-level hard">Difficile</span>
+                        <div class="challenge-title">Maître</div>
+                        <div class="challenge-description">Débloquez 20 badges</div>
+                    </div>
+                    <div class="challenge-body">
+                        <div class="challenge-points">
+                            <span class="points-label">Récompense</span>
+                            <span class="points-value">+300 pts</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%;"></div>
+                        </div>
+                        <div class="progress-text">60% complété</div>
+                        <button class="btn btn-primary" style="margin-top: 12px; width: 100%;">Continuer</button>
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <span class="challenge-level hard">Difficile</span>
+                        <div class="challenge-title">Champion</div>
+                        <div class="challenge-description">Restez #1 pendant 7 jours</div>
+                    </div>
+                    <div class="challenge-body">
+                        <div class="challenge-points">
+                            <span class="points-label">Récompense</span>
+                            <span class="points-value">+500 pts</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%;"></div>
+                        </div>
+                        <div class="progress-text">0% complété</div>
+                        <button class="btn btn-secondary" style="margin-top: 12px; width: 100%;">Verrouillé</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ LEADERBOARD PAGE ============ -->
+        <div id="leaderboard" class="page">
+            <div class="section-title">Leaderboard Global</div>
+            <div class="leaderboard-container">
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%;">Rang</th>
+                            <th style="width: 35%;">Joueur</th>
+                            <th style="width: 15%;">Défis</th>
+                            <th style="width: 20%;">Points</th>
+                            <th style="width: 25%;">Badges</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="rank-badge top1">🥇</span></td>
+                            <td>
+                                <div class="player-info">
+                                    <div class="player-avatar">AP</div>
+                                    <div class="player-details">
+                                        <h4>Alex Pena</h4>
+                                        <p>@lexicon</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>45</td>
+                            <td><span class="score-badge">5,200 pts</span></td>
+                            <td>🏆🌟✨💎🎖️</td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-badge top2">🥈</span></td>
+                            <td>
+                                <div class="player-info">
+                                    <div class="player-avatar" style="background: linear-gradient(135deg, #3b82f6, #1e40af);">SM</div>
+                                    <div class="player-details">
+                                        <h4>Sarah Martinez</h4>
+                                        <p>@smartinez</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>42</td>
+                            <td><span class="score-badge">4,850 pts</span></td>
+                            <td>🏆🌟✨💎</td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-badge top3">🥉</span></td>
+                            <td>
+                                <div class="player-info">
+                                    <div class="player-avatar" style="background: linear-gradient(135deg, #4ade80, #16a34a);">JC</div>
+                                    <div class="player-details">
+                                        <h4>Jordan Chen</h4>
+                                        <p>@jchen2024</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>38</td>
+                            <td><span class="score-badge">4,560 pts</span></td>
+                            <td>🏆🌟✨</td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-badge">4</span></td>
+                            <td>
+                                <div class="player-info">
+                                    <div class="player-avatar" style="background: linear-gradient(135deg, #a855f7, #6b21a8);">ER</div>
+                                    <div class="player-details">
+                                        <h4>Emily Rodriguez</h4>
+                                        <p>@emily_r</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>35</td>
+                            <td><span class="score-badge">4,120 pts</span></td>
+                            <td>🏆🌟✨</td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-badge">5</span></td>
+                            <td>
+                                <div class="player-info">
+                                    <div class="player-avatar" style="background: linear-gradient(135deg, #f59e0b, #d97706);">MK</div>
+                                    <div class="player-details">
+                                        <h4>Marcus King</h4>
+                                        <p>@mking</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>32</td>
+                            <td><span class="score-badge">3,890 pts</span></td>
+                            <td>🏆🌟</td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-badge">6</span></td>
+                            <td>
+                                <div class="player-info">
+                                    <div class="player-avatar" style="background: linear-gradient(135deg, #ec4899, #be185d);">LT</div>
+                                    <div class="player-details">
+                                        <h4>Lisa Thompson</h4>
+                                        <p>@lisathompson</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>29</td>
+                            <td><span class="score-badge">3,450 pts</span></td>
+                            <td>🏆🌟</td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-badge">7</span></td>
+                            <td>
+                                <div class="player-info">
+                                    <div class="player-avatar" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">DW</div>
+                                    <div class="player-details">
+                                        <h4>David Wilson</h4>
+                                        <p>@davidw</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>26</td>
+                            <td><span class="score-badge">3,120 pts</span></td>
+                            <td>🏆</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ============ PROFILE PAGE ============ -->
+        <div id="profile" class="page">
+            <div class="profile-header">
+                <div class="profile-avatar">JD</div>
+                <div class="profile-name">John Doe</div>
+                <div class="profile-username">@johndoe</div>
+                <div class="profile-stats-mini">
+                    <div>
+                        <div class="value">2,450</div>
+                        <div>Points</div>
+                    </div>
+                    <div>
+                        <div class="value">24</div>
+                        <div>Défis</div>
+                    </div>
+                    <div>
+                        <div class="value">12</div>
+                        <div>Badges</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-section">
+                    <h3>🏆 Accomplissements Récents</h3>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">⭐</div>
+                        <div class="achievement-content">
+                            <h4>Première Victoire</h4>
+                            <p>Il y a 2 jours</p>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">🌟</div>
+                        <div class="achievement-content">
+                            <h4>Grimpeur</h4>
+                            <p>Il y a 1 semaine</p>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">🎖️</div>
+                        <div class="achievement-content">
+                            <h4>Collecteur de Badges</h4>
+                            <p>Il y a 2 semaines</p>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">💎</div>
+                        <div class="achievement-content">
+                            <h4>Maître des Défis</h4>
+                            <p>Il y a 3 semaines</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h3>📊 Statistiques</h3>
+                    <div class="achievement-item">
+                        <div style="flex: 1;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span>Taux de réussite</span>
+                                <strong style="color: var(--primary-color);">85%</strong>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div style="flex: 1;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span>Défis Complétés</span>
+                                <strong style="color: var(--primary-color);">24/30</strong>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div style="flex: 1;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span>Badges Débloqués</span>
+                                <strong style="color: var(--primary-color);">12/25</strong>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 48%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ BADGES PAGE ============ -->
+        <div id="badges" class="page">
+            <div class="section-title">Badges & Récompenses</div>
+            <div class="badges-grid">
+                <div class="badge-item">
+                    <div class="badge-icon">🚀</div>
+                    <div class="badge-name">Premiers Pas</div>
+                    <div class="badge-rarity common">Common</div>
+                    <div class="badge-unlock-date">Débloqué il y a 30 jours</div>
+                </div>
+
+                <div class="badge-item">
+                    <div class="badge-icon">⭐</div>
+                    <div class="badge-name">Champion</div>
+                    <div class="badge-rarity rare">Rare</div>
+                    <div class="badge-unlock-date">Débloqué il y a 20 jours</div>
+                </div>
+
+                <div class="badge-item">
+                    <div class="badge-icon">🌟</div>
+                    <div class="badge-name">Brillant</div>
+                    <div class="badge-rarity rare">Rare</div>
+                    <div class="badge-unlock-date">Débloqué il y a 15 jours</div>
+                </div>
+
+                <div class="badge-item">
+                    <div class="badge-icon">💎</div>
+                    <div class="badge-name">Légendaire</div>
+                    <div class="badge-rarity legendary">Légendaire</div>
+                    <div class="badge-unlock-date">Débloqué il y a 7 jours</div>
+                </div>
+
+                <div class="badge-item">
+                    <div class="badge-icon">🏆</div>
+                    <div class="badge-name">Vainqueur</div>
+                    <div class="badge-rarity epic">Épique</div>
+                    <div class="badge-unlock-date">Débloqué il y a 3 jours</div>
+                </div>
+
+                <div class="badge-item">
+                    <div class="badge-icon">🎯</div>
+                    <div class="badge-name">Précision</div>
+                    <div class="badge-rarity rare">Rare</div>
+                    <div class="badge-unlock-date">Débloqué il y a 1 jour</div>
+                </div>
+
+                <div class="badge-item">
+                    <div class="badge-icon">⚡</div>
+                    <div class="badge-name">Éclair</div>
+                    <div class="badge-rarity epic">Épique</div>
+                    <div class="badge-unlock-date">Débloqué aujourd'hui</div>
+                </div>
+
+                <div class="badge-item">
+                    <div class="badge-icon">🔥</div>
+                    <div class="badge-name">Sur le Feu</div>
+                    <div class="badge-rarity common">Common</div>
+                    <div class="badge-unlock-date">Débloqué aujourd'hui</div>
+                </div>
+
+                <div class="badge-item">
+                    <div class="badge-icon">🎪</div>
+                    <div class="badge-name">Joyeux</div>
+                    <div class="badge-rarity common">Common</div>
+                    <div class="badge-unlock-date">Non débloqué</div>
+                </div>
+
+                <div class="badge-item locked">
+                    <div class="badge-icon">👑</div>
+                    <div class="badge-name">Roi</div>
+                    <div class="badge-rarity legendary">Légendaire</div>
+                    <div class="badge-unlock-date">À débloquer</div>
+                </div>
+
+                <div class="badge-item locked">
+                    <div class="badge-icon">🧙</div>
+                    <div class="badge-name">Magicien</div>
+                    <div class="badge-rarity legendary">Légendaire</div>
+                    <div class="badge-unlock-date">À débloquer</div>
+                </div>
+
+                <div class="badge-item locked">
+                    <div class="badge-icon">🚁</div>
+                    <div class="badge-name">Hélicoptère</div>
+                    <div class="badge-rarity epic">Épique</div>
+                    <div class="badge-unlock-date">À débloquer</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ STATS PAGE ============ -->
+        <div id="stats" class="page">
+            <div class="section-title">Statistiques Détaillées</div>
+            <div class="stats-grid">
+                <div class="stat-chart">
+                    <h3>Points par Catégorie</h3>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label">
+                            <span>Défis</span>
+                            <span class="chart-bar-value">1,200 pts</span>
+                        </div>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label">
+                            <span>Badges</span>
+                            <span class="chart-bar-value">800 pts</span>
+                        </div>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" style="width: 55%;"></div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label">
+                            <span>Leaderboard</span>
+                            <span class="chart-bar-value">450 pts</span>
+                        </div>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" style="width: 40%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-chart">
+                    <h3>Activité Hebdomadaire</h3>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label">
+                            <span>Lundi</span>
+                            <span class="chart-bar-value">320 pts</span>
+                        </div>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" style="width: 65%;"></div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label">
+                            <span>Mardi</span>
+                            <span class="chart-bar-value">280 pts</span>
+                        </div>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" style="width: 55%;"></div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label">
+                            <span>Mercredi</span>
+                            <span class="chart-bar-value">410 pts</span>
+                        </div>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label">
+                            <span>Jeudi</span>
+                            <span class="chart-bar-value">350 pts</span>
+                        </div>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-chart">
+                    <h3>Récapitulatif</h3>
+                    <div class="activity-item">
+                        <span class="activity-type">Total Points</span>
+                        <span class="activity-points">2,450 pts</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-type">Défis Complétés</span>
+                        <span class="activity-points">24/30</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-type">Badges Débloqués</span>
+                        <span class="activity-points">12/25</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-type">Rang Actuel</span>
+                        <span class="activity-points">#8</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-type">Séquence Actuelle</span>
+                        <span class="activity-points">7 jours</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ JAVASCRIPT ============ -->
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
