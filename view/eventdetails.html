@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Workshop TensorFlow - Kernel</title>
+  
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-color: #2563EB;
+      --secondary-color: #7C3AED;
+      --accent-color: #F59E0B;
+      --dark-color: #1F2937;
+      --light-bg: #F9FAFB;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--light-bg);
+      padding-top: 80px;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      padding: 15px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      font-family: 'Raleway', sans-serif;
+    }
+    
+    .navmenu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+    
+    .navmenu a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .btn-getstarted {
+      background: var(--accent-color);
+      color: white;
+      padding: 10px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .event-hero {
+      background: white;
+      padding: 40px 0;
+      margin-bottom: 30px;
+    }
+    
+    .event-cover {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .event-header {
+      margin-top: 30px;
+    }
+    
+    .event-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--dark-color);
+      margin-bottom: 15px;
+      font-family: 'Raleway', sans-serif;
+    }
+    
+    .event-meta {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      color: #6B7280;
+    }
+    
+    .meta-item i {
+      color: var(--primary-color);
+      font-size: 20px;
+    }
+    
+    .meta-item strong {
+      color: var(--dark-color);
+    }
+    
+    .tag {
+      display: inline-block;
+      padding: 6px 15px;
+      background: var(--light-bg);
+      color: var(--primary-color);
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+    
+    .content-section {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .section-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--dark-color);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .registration-card {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      position: sticky;
+      top: 100px;
+    }
+    
+    .price-tag {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    
+    .price-label {
+      font-size: 16px;
+      opacity: 0.9;
+      margin-bottom: 25px;
+    }
+    
+    .spots-remaining {
+      background: rgba(255,255,255,0.2);
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .spots-number {
+      font-size: 32px;
+      font-weight: 700;
+      display: block;
+    }
+    
+    .btn-register-main {
+      background: var(--accent-color);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 600;
+      width: 100%;
+      font-size: 16px;
+      margin-bottom: 10px;
+      transition: all 0.3s;
+    }
+    
+    .btn-register-main:hover {
+      background: #E68A00;
+      transform: translateY(-2px);
+    }
+    
+    .btn-add-calendar {
+      background: white;
+      color: var(--primary-color);
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 600;
+      width: 100%;
+      transition: all 0.3s;
+    }
+    
+    .organizer-card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 450px;
+    }
+    
+    .organizer-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 32px;
+      margin: 0 auto 15px;
+    }
+    
+    .organizer-name {
+      text-align: center;
+      font-weight: 600;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    
+    .organizer-role {
+      text-align: center;
+      color: #6B7280;
+      margin-bottom: 15px;
+    }
+    
+    .speaker-card {
+      display: flex;
+      gap: 15px;
+      padding: 20px;
+      background: var(--light-bg);
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .speaker-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    
+    .agenda-item {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      border-left: 3px solid var(--primary-color);
+      margin-bottom: 15px;
+      background: var(--light-bg);
+      border-radius: 0 10px 10px 0;
+    }
+    
+    .agenda-time {
+      font-weight: 700;
+      color: var(--primary-color);
+      min-width: 70px;
+    }
+    
+    .agenda-content h5 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--dark-color);
+      margin-bottom: 5px;
+    }
+    
+    .participant-avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .info-box {
+      background: var(--light-bg);
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid var(--primary-color);
+      margin-bottom: 20px;
+    }
+    
+    .btn-share {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border: 2px solid var(--primary-color);
+      border-radius: 10px;
+      background: white;
+      color: var(--primary-color);
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .btn-share:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+    
+    @media (max-width: 991px) {
+      .navmenu { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo">
+        <i class="bi bi-hexagon-fill"></i> Kernel
+      </a>
+
+      <nav class="navmenu">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="projets-list.html">Projets</a></li>
+          <li><a href="evenements-list.html" style="color: var(--accent-color);">Événements</a></li>
+          <li><a href="forum.html">Forum</a></li>
+          <li><a href="profil-utilisateur.html">Profil</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn-getstarted" href="login.html">Connexion</a>
+    </div>
+  </header>
+
+  <div class="event-hero">
+    <div class="container">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='450' viewBox='0 0 1200 450'%3E%3Crect fill='%232563EB' width='1200' height='450'/%3E%3Ccircle cx='300' cy='225' r='100' fill='%2360A5FA' opacity='0.4'/%3E%3Ccircle cx='900' cy='225' r='120' fill='%237C3AED' opacity='0.3'/%3E%3Crect x='450' y='150' width='300' height='150' fill='white' opacity='0.1' rx='20'/%3E%3Ctext x='50%25' y='45%25' font-size='70' fill='white' text-anchor='middle' font-weight='bold'%3EWorkshop%3C/text%3E%3Ctext x='50%25' y='55%25' font-size='50' fill='%23FCD34D' text-anchor='middle' font-weight='bold'%3ETensorFlow%3C/text%3E%3C/svg%3E" alt="Event Cover" class="event-cover">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="event-header">
+          <h1 class="event-title">Workshop: TensorFlow pour débutants</h1>
+          
+          <div class="event-meta">
+            <div class="meta-item">
+              <i class="bi bi-calendar-event"></i>
+              <span><strong>22 Novembre 2024</strong></span>
+            </div>
+            <div class="meta-item">
+              <i class="bi bi-clock"></i>
+              <span><strong>14h00 - 18h00</strong> (4 heures)</span>
+            </div>
+            <div class="meta-item">
+              <i class="bi bi-geo-alt"></i>
+              <span><strong>Online</strong> - Zoom</span>
+            </div>
+            <div class="meta-item">
+              <i class="bi bi-people"></i>
+              <span><strong>47 inscrits</strong> / 50 places</span>
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <span class="tag">#TensorFlow</span>
+            <span class="tag">#Intelligence Artificielle</span>
+            <span class="tag">#Machine Learning</span>
+            <span class="tag">#Python</span>
+          </div>
+          
+          <div class="d-flex gap-2 mb-4">
+            <button class="btn-share">
+              <i class="bi bi-share"></i> Partager
+            </button>
+            <button class="btn-share">
+              <i class="bi bi-bookmark"></i> Sauvegarder
+            </button>
+            <button class="btn-share">
+              <i class="bi bi-flag"></i> Signaler
+            </button>
+          </div>
+        </div>
+
+        <div class="content-section">
+          <div class="section-title">
+            <i class="bi bi-info-circle"></i> À propos de l'événement
+          </div>
+          
+          <div class="info-box">
+            <strong>🎯 Niveau:</strong> Débutant - Aucune expérience préalable en ML requise
+          </div>
+          
+          <p>Rejoignez-nous pour un workshop pratique sur TensorFlow, la bibliothèque d'apprentissage automatique la plus populaire au monde ! Cet atelier de 4 heures est conçu spécialement pour les débutants qui souhaitent se lancer dans l'intelligence artificielle.</p>
+          
+          <h5>Ce que vous allez apprendre :</h5>
+          <ul>
+            <li>Les fondamentaux de l'apprentissage automatique et du deep learning</li>
+            <li>Installation et configuration de TensorFlow</li>
+            <li>Création de votre premier réseau de neurones</li>
+            <li>Entraînement d'un modèle de classification d'images</li>
+            <li>Évaluation et amélioration des performances du modèle</li>
+            <li>Bonnes pratiques et astuces pour démarrer vos projets IA</li>
+          </ul>
+          
+          <h5>Prérequis :</h5>
+          <ul>
+            <li>Connaissances de base en Python</li>
+            <li>Ordinateur avec Python 3.8+ installé</li>
+            <li>Connexion internet stable</li>
+            <li>Webcam et microphone (pour les interactions)</li>
+          </ul>
+          
+          <h5>Ce qui est inclus :</h5>
+          <ul>
+            <li>Accès au workshop en direct via Zoom</li>
+            <li>Support de cours et notebooks Jupyter</li>
+            <li>Enregistrement de la session (disponible 7 jours)</li>
+            <li>Certificat de participation</li>
+            <li>Accès à la communauté Discord pour le suivi</li>
+          </ul>
+        </div>
+
+        <div class="content-section">
+          <div class="section-title">
+            <i class="bi bi-calendar-check"></i> Programme de l'événement
+          </div>
+          
+          <div class="agenda-item">
+            <div class="agenda-time">14:00</div>
+            <div class="agenda-content">
+              <h5>Accueil et Introduction</h5>
+              <p class="text-muted mb-0">Présentation des participants et objectifs du workshop</p>
+            </div>
+          </div>
+          
+          <div class="agenda-item">
+            <div class="agenda-time">14:15</div>
+            <div class="agenda-content">
+              <h5>Fondamentaux du Machine Learning</h5>
+              <p class="text-muted mb-0">Concepts clés, types d'apprentissage, et cas d'usage</p>
+            </div>
+          </div>
+          
+          <div class="agenda-item">
+            <div class="agenda-time">14:45</div>
+            <div class="agenda-content">
+              <h5>Introduction à TensorFlow</h5>
+              <p class="text-muted mb-0">Architecture, installation, et premiers pas</p>
+            </div>
+          </div>
+          
+          <div class="agenda-item">
+            <div class="agenda-time">15:30</div>
+            <div class="agenda-content">
+              <h5>☕ Pause</h5>
+              <p class="text-muted mb-0">15 minutes de pause</p>
+            </div>
+          </div>
+          
+          <div class="agenda-item">
+            <div class="agenda-time">15:45</div>
+            <div class="agenda-content">
+              <h5>Création d'un Réseau de Neurones</h5>
+              <p class="text-muted mb-0">Pratique hands-on : construction de votre premier modèle</p>
+            </div>
+          </div>
+          
+          <div class="agenda-item">
+            <div class="agenda-time">16:45</div>
+            <div class="agenda-content">
+              <h5>Entraînement et Évaluation</h5>
+              <p class="text-muted mb-0">Techniques d'optimisation et amélioration des performances</p>
+            </div>
+          </div>
+          
+          <div class="agenda-item">
+            <div class="agenda-time">17:30</div>
+            <div class="agenda-content">
+              <h5>Q&A et Prochaines Étapes</h5>
+              <p class="text-muted mb-0">Questions-réponses et ressources pour continuer</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-section">
+          <div class="section-title">
+            <i class="bi bi-person-badge"></i> Intervenants
+          </div>
+          
+          <div class="speaker-card">
+            <div class="speaker-avatar">AM</div>
+            <div>
+              <h5 style="font-size: 18px; font-weight: 600; margin-bottom: 5px;">Ahmed Mejri</h5>
+              <div style="color: #6B7280; font-size: 14px; margin-bottom: 10px;">Data Scientist • PhD en IA</div>
+              <p style="font-size: 14px; margin-bottom: 0;">Expert en Machine Learning avec 10 ans d'expérience. A formé plus de 500 développeurs aux technologies IA.</p>
+            </div>
+          </div>
+          
+          <div class="speaker-card">
+            <div class="speaker-avatar" style="background: linear-gradient(135deg, #7C3AED, #F59E0B);">SK</div>
+            <div>
+              <h5 style="font-size: 18px; font-weight: 600; margin-bottom: 5px;">Sara Khalil</h5>
+              <div style="color: #6B7280; font-size: 14px; margin-bottom: 10px;">ML Engineer • Google Developer Expert</div>
+              <p style="font-size: 14px; margin-bottom: 0;">Spécialiste TensorFlow et contributrice active à la communauté open-source.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-section">
+          <div class="section-title">
+            <i class="bi bi-people"></i> Participants (47)
+          </div>
+          
+          <div>
+            <div class="participant-avatar">MB</div>
+            <div class="participant-avatar" style="background: linear-gradient(135deg, #10B981, #06B6D4);">LB</div>
+            <div class="participant-avatar" style="background: linear-gradient(135deg, #8B5CF6, #EC4899);">RK</div>
+            <div class="participant-avatar" style="background: linear-gradient(135deg, #F59E0B, #EF4444);">YM</div>
+            <div class="participant-avatar" style="background: linear-gradient(135deg, #06B6D4, #3B82F6);">NH</div>
+            <div class="participant-avatar" style="background: linear-gradient(135deg, #EF4444, #F59E0B);">FA</div>
+            <div class="participant-avatar" style="background: linear-gradient(135deg, #10B981, #F59E0B);">+41</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="registration-card">
+          <div class="price-tag">GRATUIT</div>
+          <div class="price-label">Places limitées</div>
+          
+          <div class="spots-remaining">
+            <span class="spots-number">3</span>
+            <span>places restantes</span>
+          </div>
+          
+          <button class="btn-register-main">
+            <i class="bi bi-box-arrow-right me-2"></i> S'inscrire Maintenant
+          </button>
+          <button class="btn-add-calendar">
+            <i class="bi bi-calendar-plus me-2"></i> Ajouter au calendrier
+          </button>
+          
+          <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 14px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+              <span>📅 Date</span>
+              <strong>22 Nov 2024</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+              <span>⏰ Durée</span>
+              <strong>4 heures</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+              <span>🌐 Format</span>
+              <strong>Online</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>🎓 Niveau</span>
+              <strong>Débutant</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="organizer-card">
+          <div class="organizer-avatar">KN</div>
+          <div class="organizer-name">Kernel</div>
+          <div class="organizer-role">Organisateur officiel</div>
+          
+          <p style="text-align: center; color: #6B7280; font-size: 14px;">Plateforme d'innovation collaborative pour les passionnés de technologie.</p>
+          
+          <button class="btn-add-calendar" style="background: var(--light-bg); color: var(--dark-color);">
+            <i class="bi bi-building me-2"></i> Voir le profil
+          </button>
+          
+          <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #E5E7EB; text-align: center;">
+            <div style="font-weight: 700; font-size: 20px; color: var(--primary-color); margin-bottom: 5px;">42</div>
+            <div style="font-size: 12px; color: #6B7280;">Événements organisés</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    document.querySelector('.btn-register-main').addEventListener('click', function() {
+      alert('Inscription confirmée ! 🎉\nVous recevrez un email avec le lien Zoom.');
+    });
+  </script>
+</body>
+</html>
