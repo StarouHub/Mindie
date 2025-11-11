@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Profil - Ahmed Mejri - Kernel</title>
+  
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-color: #2563EB;
+      --secondary-color: #7C3AED;
+      --accent-color: #F59E0B;
+      --dark-color: #1F2937;
+      --light-bg: #F9FAFB;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--light-bg);
+      padding-top: 80px;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      padding: 15px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      font-family: 'Raleway', sans-serif;
+    }
+    
+    .navmenu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+    
+    .navmenu a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    
+    .navmenu a:hover {
+      color: var(--accent-color);
+    }
+    
+    .btn-getstarted {
+      background: var(--accent-color);
+      color: white;
+      padding: 10px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .profile-header {
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .profile-cover {
+      height: 200px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 15px 15px 0 0;
+      margin: -40px -40px 0 -40px;
+      position: relative;
+    }
+    
+    .profile-avatar-wrapper {
+      position: relative;
+      margin-top: -80px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .profile-avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 64px;
+      border: 6px solid white;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    }
+    
+    .profile-name {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--dark-color);
+      margin-bottom: 5px;
+      font-family: 'Raleway', sans-serif;
+    }
+    
+    .profile-title {
+      font-size: 18px;
+      color: #6B7280;
+      margin-bottom: 15px;
+    }
+    
+    .profile-bio {
+      color: #4B5563;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto 20px;
+      text-align: center;
+    }
+    
+    .profile-meta {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      color: #6B7280;
+      font-size: 14px;
+    }
+    
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .profile-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 1px solid #E5E7EB;
+    }
+    
+    .stat-box {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--primary-color);
+      display: block;
+    }
+    
+    .stat-label {
+      color: #6B7280;
+      font-size: 14px;
+    }
+    
+    .profile-actions {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+    }
+    
+    .btn-action {
+      padding: 10px 25px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: 2px solid #E5E7EB;
+      background: white;
+      color: var(--dark-color);
+      cursor: pointer;
+    }
+    
+    .btn-action:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+    
+    .btn-action.primary {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border: none;
+    }
+    
+    .btn-action.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+    }
+    
+    .content-tabs {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .tab-buttons {
+      display: flex;
+      gap: 10px;
+      border-bottom: 2px solid #E5E7EB;
+      margin-bottom: 25px;
+      overflow-x: auto;
+    }
+    
+    .tab-btn {
+      padding: 12px 25px;
+      background: none;
+      border: none;
+      color: #6B7280;
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+      white-space: nowrap;
+      transition: all 0.3s;
+    }
+    
+    .tab-btn:hover {
+      color: var(--primary-color);
+    }
+    
+    .tab-btn.active {
+      color: var(--primary-color);
+    }
+    
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--primary-color);
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .project-mini-card {
+      background: var(--light-bg);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 15px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .project-mini-card:hover {
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .project-mini-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--dark-color);
+      margin-bottom: 8px;
+    }
+    
+    .project-mini-meta {
+      display: flex;
+      gap: 15px;
+      color: #6B7280;
+      font-size: 13px;
+    }
+    
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 15px;
+    }
+    
+    .badge-card {
+      background: white;
+      border: 2px solid #E5E7EB;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .badge-card:hover {
+      border-color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+    
+    .badge-card.locked {
+      opacity: 0.4;
+      cursor: default;
+    }
+    
+    .badge-icon {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+    
+    .badge-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--dark-color);
+    }
+    
+    .activity-item {
+      display: flex;
+      gap: 15px;
+      padding: 15px;
+      background: var(--light-bg);
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+    
+    .activity-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      flex-shrink: 0;
+    }
+    
+    .activity-content {
+      flex: 1;
+    }
+    
+    .activity-text {
+      color: #4B5563;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    
+    .activity-time {
+      color: #9CA3AF;
+      font-size: 12px;
+    }
+    
+    .skill-tag {
+      display: inline-block;
+      padding: 8px 15px;
+      background: var(--light-bg);
+      border: 2px solid #E5E7EB;
+      color: var(--dark-color);
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .sidebar-card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+      position: sticky;
+      top: 100px;
+    }
+    
+    .sidebar-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--dark-color);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .progress-item {
+      margin-bottom: 20px;
+    }
+    
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    
+    .progress-bar-custom {
+      height: 10px;
+      background: #E5E7EB;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 10px;
+      transition: width 1s ease;
+    }
+    
+    @media (max-width: 991px) {
+      .navmenu { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo">
+        <i class="bi bi-hexagon-fill"></i> Kernel
+      </a>
+
+      <nav class="navmenu">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="projets-list.html">Projets</a></li>
+          <li><a href="evenements-list.html">Événements</a></li>
+          <li><a href="forum.html">Forum</a></li>
+          <li><a href="profil-utilisateur.html" style="color: var(--accent-color);">Profil</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn-getstarted" href="login.html">Déconnexion</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="profile-header">
+      <div class="profile-cover"></div>
+      
+      <div class="profile-avatar-wrapper">
+        <div class="profile-avatar">AM</div>
+      </div>
+      
+      <h1 class="profile-name">Ahmed Mejri</h1>
+      <div class="profile-title">Entrepreneur Tech • Expert IA • Fondateur</div>
+      
+      <p class="profile-bio">
+        Ingénieur en Intelligence Artificielle avec 8 ans d'expérience dans le développement de solutions innovantes. Passionné par l'IA, le Machine Learning et l'entrepreneuriat tech. Mentor actif dans la communauté startup tunisienne.
+      </p>
+      
+      <div class="profile-meta">
+        <div class="meta-item">
+          <i class="bi bi-geo-alt"></i>
+          <span>Tunis, Tunisie</span>
+        </div>
+        <div class="meta-item">
+          <i class="bi bi-briefcase"></i>
+          <span>Fondateur @ AI Solutions</span>
+        </div>
+        <div class="meta-item">
+          <i class="bi bi-calendar"></i>
+          <span>Membre depuis Janvier 2023</span>
+        </div>
+        <div class="meta-item">
+          <i class="bi bi-link-45deg"></i>
+          <a href="#" style="color: var(--primary-color);">www.ahmedmejri.tech</a>
+        </div>
+      </div>
+      
+      <div class="profile-actions">
+        <button class="btn-action primary">
+          <i class="bi bi-pencil me-2"></i> Modifier le profil
+        </button>
+        <button class="btn-action">
+          <i class="bi bi-share me-2"></i> Partager
+        </button>
+        <button class="btn-action">
+          <i class="bi bi-gear me-2"></i> Paramètres
+        </button>
+      </div>
+      
+      <div class="profile-stats">
+        <div class="stat-box">
+          <span class="stat-number">5</span>
+          <span class="stat-label">Projets</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">342</span>
+          <span class="stat-label">Followers</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">187</span>
+          <span class="stat-label">Following</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">4.8</span>
+          <span class="stat-label">Note moyenne</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="content-tabs">
+          <div class="tab-buttons">
+            <button class="tab-btn active" onclick="switchTab('projects')">
+              <i class="bi bi-lightbulb me-2"></i> Mes Projets
+            </button>
+            <button class="tab-btn" onclick="switchTab('badges')">
+              <i class="bi bi-trophy me-2"></i> Badges
+            </button>
+            <button class="tab-btn" onclick="switchTab('activity')">
+              <i class="bi bi-clock-history me-2"></i> Activité
+            </button>
+            <button class="tab-btn" onclick="switchTab('skills')">
+              <i class="bi bi-star me-2"></i> Compétences
+            </button>
+          </div>
+
+          <!-- Tab Projets -->
+          <div class="tab-content active" id="projects">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 style="font-weight: 600; color: var(--dark-color); margin: 0;">Projets (5)</h4>
+              <button class="btn-action primary" onclick="window.location.href='ajouter-projet.html'">
+                <i class="bi bi-plus-circle me-2"></i> Nouveau projet
+              </button>
+            </div>
+
+            <div class="project-mini-card" onclick="window.location.href='projet-details.html'">
+              <div class="project-mini-title">Assistant IA Intelligent pour PME</div>
+              <p style="color: #6B7280; font-size: 14px; margin-bottom: 10px;">
+                Assistant virtuel basé sur l'IA pour automatiser les tâches quotidiennes des petites et moyennes entreprises.
+              </p>
+              <div class="project-mini-meta">
+                <span><i class="bi bi-eye me-1"></i> 3,456 vues</span>
+                <span><i class="bi bi-heart me-1"></i> 234 likes</span>
+                <span style="color: var(--primary-color); font-weight: 600;">
+                  <i class="bi bi-cash me-1"></i> 53% financé
+                </span>
+              </div>
+            </div>
+
+            <div class="project-mini-card">
+              <div class="project-mini-title">Plateforme E-learning Interactive</div>
+              <p style="color: #6B7280; font-size: 14px; margin-bottom: 10px;">
+                Système d'apprentissage en ligne avec gamification et suivi personnalisé des étudiants.
+              </p>
+              <div class="project-mini-meta">
+                <span><i class="bi bi-eye me-1"></i> 2,187 vues</span>
+                <span><i class="bi bi-heart me-1"></i> 156 likes</span>
+                <span style="color: #10B981; font-weight: 600;">
+                  <i class="bi bi-check-circle me-1"></i> Financé à 100%
+                </span>
+              </div>
+            </div>
+
+            <div class="project-mini-card">
+              <div class="project-mini-title">App Mobile de Gestion de Santé</div>
+              <p style="color: #6B7280; font-size: 14px; margin-bottom: 10px;">
+                Application mobile pour le suivi médical et la prise de rendez-vous avec téléconsultation.
+              </p>
+              <div class="project-mini-meta">
+                <span><i class="bi bi-eye me-1"></i> 1,842 vues</span>
+                <span><i class="bi bi-heart me-1"></i> 98 likes</span>
+                <span style="color: var(--primary-color); font-weight: 600;">
+                  <i class="bi bi-cash me-1"></i> 28% financé
+                </span>
+              </div>
+            </div>
+
+            <div class="project-mini-card">
+              <div class="project-mini-title">Chatbot Service Client IA</div>
+              <p style="color: #6B7280; font-size: 14px; margin-bottom: 10px;">
+                Chatbot intelligent pour améliorer l'expérience client et réduire les temps de réponse.
+              </p>
+              <div class="project-mini-meta">
+                <span><i class="bi bi-eye me-1"></i> 1,523 vues</span>
+                <span><i class="bi bi-heart me-1"></i> 76 likes</span>
+                <span style="color: #6B7280; font-weight: 600;">
+                  <i class="bi bi-hourglass me-1"></i> En développement
+                </span>
+              </div>
+            </div>
+
+            <div class="project-mini-card">
+              <div class="project-mini-title">Système de Recommandation E-commerce</div>
+              <p style="color: #6B7280; font-size: 14px; margin-bottom: 10px;">
+                Moteur de recommandation personnalisé utilisant le Machine Learning pour l'e-commerce.
+              </p>
+              <div class="project-mini-meta">
+                <span><i class="bi bi-eye me-1"></i> 987 vues</span>
+                <span><i class="bi bi-heart me-1"></i> 54 likes</span>
+                <span style="color: #6B7280; font-weight: 600;">
+                  <i class="bi bi-lightbulb me-1"></i> Phase concept
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Badges -->
+          <div class="tab-content" id="badges">
+            <h4 style="font-weight: 600; color: var(--dark-color); margin-bottom: 20px;">
+              Badges débloqués (12/24)
+            </h4>
+
+            <div class="badge-grid">
+              <div class="badge-card">
+                <div class="badge-icon">🏆</div>
+                <div class="badge-name">Expert</div>
+              </div>
+              <div class="badge-card">
+                <div class="badge-icon">🚀</div>
+                <div class="badge-name">Innovateur</div>
+              </div>
+              <div class="badge-card">
+                <div class="badge-icon">💡</div>
+                <div class="badge-name">Visionnaire</div>
+              </div>
+              <div class="badge-card">
+                <div class="badge-icon">⭐</div>
+                <div class="badge-name">Top Contributeur</div>
+              </div>
+              <div class="badge-card">
+                <div class="badge-icon">🎯</div>
+                <div class="badge-name">5 Projets</div>
+              </div>
+              <div class="badge-card">
+                <div class="badge-icon">👥</div>
+                <div class="badge-name">Mentor</div>
+              </div>
+              <div class="badge-card">
+                <div class="badge-icon">💬</div>
+                <div class="badge-name">Communicateur</div>
+              </div>
+              <div class="badge-card">
+                <div class="badge-icon">📚</div>
+                <div class="badge-name">Formateur</div>
+              </div>
+              <div class="badge-card">
+                <div class="badge-icon">🔥</div>
+                <div class="badge-name">Série 30j</div>
+              </div>
+              <div class="badge-card">
+                <div class="badge-icon">🎓</div>
+                <div class="badge-name">Expert IA</div>
+              </div>
+              <div class="badge-card">
+                <div class="badge-icon">💰</div>
+                <div class="badge-name">Financé</div>
+              </div>
+              <div class="badge-card">
+                <div class="badge-icon">🌟</div>
+                <div class="badge-name">Ambassadeur</div>
+              </div>
+              <div class="badge-card locked">
+                <div class="badge-icon">🔒</div>
+                <div class="badge-name">10 Projets</div>
+              </div>
+              <div class="badge-card locked">
+                <div class="badge-icon">🔒</div>
+                <div class="badge-name">Pionnier</div>
+              </div>
+              <div class="badge-card locked">
+                <div class="badge-icon">🔒</div>
+                <div class="badge-name">Champion</div>
+              </div>
+              <div class="badge-card locked">
+                <div class="badge-icon">🔒</div>
+                <div class="badge-name">Légende</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Activité -->
+          <div class="tab-content" id="activity">
+            <h4 style="font-weight: 600; color: var(--dark-color); margin-bottom: 20px;">
+              Activité récente
+            </h4>
+
+            <div class="activity-item">
+              <div class="activity-icon">
+                <i class="bi bi-chat-dots"></i>
+              </div>
+              <div class="activity-content">
+                <div class="activity-text">
+                  A répondu à la discussion <strong>"Comment intégrer TensorFlow"</strong>
+                </div>
+                <div class="activity-time">il y a 2 heures</div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon" style="background: linear-gradient(135deg, #10B981, #06B6D4);">
+                <i class="bi bi-lightbulb"></i>
+              </div>
+              <div class="activity-content">
+                <div class="activity-text">
+                  A publié un nouveau projet <strong>"Assistant IA Intelligent"</strong>
+                </div>
+                <div class="activity-time">il y a 1 jour</div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon" style="background: linear-gradient(135deg, #F59E0B, #EF4444);">
+                <i class="bi bi-heart-fill"></i>
+              </div>
+              <div class="activity-content">
+                <div class="activity-text">
+                  A aimé le projet <strong>"Plateforme NFT Artistique"</strong>
+                </div>
+                <div class="activity-time">il y a 2 jours</div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon" style="background: linear-gradient(135deg, #8B5CF6, #EC4899);">
+                <i class="bi bi-calendar-check"></i>
+              </div>
+              <div class="activity-content">
+                <div class="activity-text">
+                  S'est inscrit à l'événement <strong>"Hackathon National IA 2024"</strong>
+                </div>
+                <div class="activity-time">il y a 3 jours</div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon" style="background: linear-gradient(135deg, #06B6D4, #3B82F6);">
+                <i class="bi bi-trophy"></i>
+              </div>
+              <div class="activity-content">
+                <div class="activity-text">
+                  A débloqué le badge <strong>"Expert IA"</strong>
+                </div>
+                <div class="activity-time">il y a 5 jours</div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon">
+                <i class="bi bi-chat-left-text"></i>
+              </div>
+              <div class="activity-content">
+                <div class="activity-text">
+                  A créé une discussion <strong>"Besoin de conseils pour lever des fonds"</strong>
+                </div>
+                <div class="activity-time">il y a 1 semaine</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Compétences -->
+          <div class="tab-content" id="skills">
+            <h4 style="font-weight: 600; color: var(--dark-color); margin-bottom: 20px;">
+              Compétences techniques
+            </h4>
+
+            <div class="mb-4">
+              <h5 style="font-size: 16px; font-weight: 600; margin-bottom: 15px;">Langages de programmation</h5>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">C++</span>
+            </div>
+
+            <div class="mb-4">
+              <h5 style="font-size: 16px; font-weight: 600; margin-bottom: 15px;">Intelligence Artificielle & ML</h5>
+              <span class="skill-tag">TensorFlow</span>
+              <span class="skill-tag">PyTorch</span>
+              <span class="skill-tag">Scikit-learn</span>
+              <span class="skill-tag">Keras</span>
+              <span class="skill-tag">OpenCV</span>
+              <span class="skill-tag">NLP</span>
+              <span class="skill-tag">Computer Vision</span>
+            </div>
+
+            <div class="mb-4">
+              <h5 style

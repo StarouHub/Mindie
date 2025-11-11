@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Kernel - Plateforme d'Innovation Collaborative</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Vendor CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-color: #2563EB;
+      --secondary-color: #7C3AED;
+      --accent-color: #F59E0B;
+      --dark-color: #1F2937;
+      --light-bg: #F9FAFB;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: var(--dark-color);
+    }
+    
+    .header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      padding: 15px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      font-family: 'Raleway', sans-serif;
+    }
+    
+    .navmenu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+    
+    .navmenu a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    
+    .navmenu a:hover {
+      color: var(--accent-color);
+    }
+    
+    .btn-getstarted {
+      background: var(--accent-color);
+      color: white;
+      padding: 10px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .btn-getstarted:hover {
+      background: #E68A00;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
+    }
+    
+    .hero {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      padding: 150px 0 100px;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      font-family: 'Raleway', sans-serif;
+    }
+    
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    
+    .btn-get-started {
+      background: var(--accent-color);
+      color: white;
+      padding: 15px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: all 0.3s;
+    }
+    
+    .btn-get-started:hover {
+      background: #E68A00;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+    }
+    
+    .hero-img {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-title h2 {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--dark-color);
+      font-family: 'Raleway', sans-serif;
+    }
+    
+    .section-title p {
+      color: #6B7280;
+      font-size: 16px;
+    }
+    
+    .stats {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      padding: 60px 0;
+      color: white;
+    }
+    
+    .stats-item {
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .stats-item span {
+      font-size: 48px;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    .stats-item p {
+      font-size: 18px;
+      margin: 0;
+    }
+    
+    .service-item {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+      margin-bottom: 30px;
+    }
+    
+    .service-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    
+    .service-item .icon {
+      font-size: 40px;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+    
+    .service-item h4 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: var(--dark-color);
+    }
+    
+    .project-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+      margin-bottom: 30px;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .project-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+    
+    .project-info {
+      padding: 25px;
+    }
+    
+    .project-info h4 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--dark-color);
+    }
+    
+    .project-badge {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-right: 5px;
+      margin-bottom: 10px;
+    }
+    
+    .footer {
+      background: var(--dark-color);
+      color: white;
+      padding: 60px 0 20px;
+    }
+    
+    .footer h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    
+    .footer ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer ul li {
+      margin-bottom: 10px;
+    }
+    
+    .footer a {
+      color: #9CA3AF;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer a:hover {
+      color: var(--accent-color);
+    }
+    
+    .social-links a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      margin-right: 10px;
+      transition: all 0.3s;
+    }
+    
+    .social-links a:hover {
+      background: var(--accent-color);
+      transform: translateY(-3px);
+    }
+    
+    section {
+      padding: 80px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo">
+        <i class="bi bi-hexagon-fill"></i> Kernel
+      </a>
+
+      <nav class="navmenu">
+        <ul>
+          <li><a href="#hero">Accueil</a></li>
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projets</a></li>
+          <li><a href="#events">Événements</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn-getstarted" href="#about">Commencer</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h1>Transformez vos Idées en Innovation</h1>
+            <p>Rejoignez la communauté des innovateurs, partagez vos projets technologiques et trouvez des partenaires pour construire l'avenir</p>
+            <a href="#about" class="btn-get-started">Découvrir Kernel</a>
+          </div>
+          <div class="col-lg-6 hero-img">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" style="width: 100%;">
+              <rect x="50" y="150" width="120" height="80" fill="#60A5FA" rx="10"/>
+              <rect x="190" y="180" width="120" height="80" fill="#818CF8" rx="10"/>
+              <rect x="330" y="120" width="120" height="80" fill="#F59E0B" rx="10"/>
+              <circle cx="110" cy="100" r="30" fill="#34D399"/>
+              <circle cx="250" cy="130" r="35" fill="#F472B6"/>
+              <circle cx="390" cy="80" r="25" fill="#FBBF24"/>
+              <line x1="110" y1="130" x2="110" y2="150" stroke="white" stroke-width="3"/>
+              <line x1="250" y1="165" x2="250" y2="180" stroke="white" stroke-width="3"/>
+              <line x1="390" y1="105" x2="390" y2="120" stroke="white" stroke-width="3"/>
+              <path d="M 110 230 L 250 260 L 390 200" stroke="#FCD34D" stroke-width="3" fill="none" stroke-dasharray="5,5"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item">
+              <span>1,234</span>
+              <p>Projets Innovants</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item">
+              <span>5,678</span>
+              <p>Innovateurs</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item">
+              <span>342</span>
+              <p>Événements Tech</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item">
+              <span>$12M</span>
+              <p>Financements</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Nos Services</h2>
+          <p>Une plateforme complète pour propulser vos projets innovants</p>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-4 col-lg-6">
+            <div class="service-item">
+              <i class="bi bi-lightbulb icon"></i>
+              <h4>Gestion de Projets</h4>
+              <p>Créez, partagez et gérez vos projets innovants avec des outils collaboratifs performants</p>
+            </div>
+          </div>
+
+          <div class="col-xl-4 col-lg-6">
+            <div class="service-item">
+              <i class="bi bi-cash-coin icon"></i>
+              <h4>Financement Participatif</h4>
+              <p>Trouvez des investisseurs pour vos projets et suivez vos financements en temps réel</p>
+            </div>
+          </div>
+
+          <div class="col-xl-4 col-lg-6">
+            <div class="service-item">
+              <i class="bi bi-calendar-event icon"></i>
+              <h4>Événements Tech</h4>
+              <p>Participez à des hackathons, conférences et workshops pour networker et apprendre</p>
+            </div>
+          </div>
+
+          <div class="col-xl-4 col-lg-6">
+            <div class="service-item">
+              <i class="bi bi-chat-dots icon"></i>
+              <h4>Forum Communautaire</h4>
+              <p>Échangez avec d'autres innovateurs, posez vos questions et partagez vos connaissances</p>
+            </div>
+          </div>
+
+          <div class="col-xl-4 col-lg-6">
+            <div class="service-item">
+              <i class="bi bi-book icon"></i>
+              <h4>Ressources & Tutoriels</h4>
+              <p>Accédez à une bibliothèque complète de guides, cours et ressources technologiques</p>
+            </div>
+          </div>
+
+          <div class="col-xl-4 col-lg-6">
+            <div class="service-item">
+              <i class="bi bi-trophy icon"></i>
+              <h4>Système de Badges</h4>
+              <p>Gagnez des récompenses et badges en fonction de votre activité et contributions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" style="background: var(--light-bg);">
+      <div class="container">
+        <div class="section-title">
+          <h2>Projets en Vedette</h2>
+          <p>Découvrez les projets innovants de notre communauté</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="project-card">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Crect fill='%232563EB' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' font-size='60' fill='white' text-anchor='middle' dy='.3em'%3EAI Project%3C/text%3E%3C/svg%3E" alt="Projet IA">
+              <div class="project-info">
+                <h4>Assistant IA Intelligent</h4>
+                <div>
+                  <span class="project-badge">Intelligence Artificielle</span>
+                  <span class="project-badge">Machine Learning</span>
+                </div>
+                <p>Un assistant virtuel basé sur l'IA pour automatiser les tâches quotidiennes</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="project-card">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Crect fill='%237C3AED' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' font-size='60' fill='white' text-anchor='middle' dy='.3em'%3EIoT%3C/text%3E%3C/svg%3E" alt="Projet IoT">
+              <div class="project-info">
+                <h4>Maison Connectée Écologique</h4>
+                <div>
+                  <span class="project-badge">IoT</span>
+                  <span class="project-badge">Écologie</span>
+                </div>
+                <p>Système domotique pour optimiser la consommation énergétique</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="project-card">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Crect fill='%23F59E0B' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' font-size='50' fill='white' text-anchor='middle' dy='.3em'%3EBlockchain%3C/text%3E%3C/svg%3E" alt="Projet Blockchain">
+              <div class="project-info">
+                <h4>Plateforme NFT Artistique</h4>
+                <div>
+                  <span class="project-badge">Blockchain</span>
+                  <span class="project-badge">NFT</span>
+                </div>
+                <p>Marketplace décentralisée pour les artistes numériques</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contactez-Nous</h2>
+          <p>Une question ? N'hésitez pas à nous contacter</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="service-item text-center">
+                  <i class="bi bi-geo-alt icon"></i>
+                  <h4>Adresse</h4>
+                  <p>123 Innovation Street<br>Tunis, Tunisie</p>
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                <div class="service-item text-center">
+                  <i class="bi bi-telephone icon"></i>
+                  <h4>Téléphone</h4>
+                  <p>+216 XX XXX XXX<br>+216 XX XXX XXX</p>
+                </div>
+              </div>
+
+              <div class="col-md-12 mb-4">
+                <div class="service-item text-center">
+                  <i class="bi bi-envelope icon"></i>
+                  <h4>Email</h4>
+                  <p>contact@kernel.tn<br>support@kernel.tn</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <form class="p-4" style="background: white; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Votre Nom" required>
+              </div>
+              <div class="mb-3">
+                <input type="email" class="form-control" placeholder="Votre Email" required>
+              </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Sujet" required>
+              </div>
+              <div class="mb-3">
+                <textarea class="form-control" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-get-started w-100">Envoyer le Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <a href="index.html" class="logo d-block mb-3">
+            <i class="bi bi-hexagon-fill"></i> Kernel
+          </a>
+          <p>La plateforme collaborative pour propulser vos projets innovants vers le succès. Rejoignez une communauté passionnée de créateurs et d'entrepreneurs tech.</p>
+          <div class="social-links mt-3">
+            <a href="#"><i class="bi bi-twitter-x"></i></a>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 mb-4">
+          <h4>Liens Utiles</h4>
+          <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">À propos</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Conditions d'utilisation</a></li>
+            <li><a href="#">Confidentialité</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h4>Nos Services</h4>
+          <ul>
+            <li><a href="#">Gestion de Projets</a></li>
+            <li><a href="#">Financement</a></li>
+            <li><a href="#">Événements Tech</a></li>
+            <li><a href="#">Forum</a></li>
+            <li><a href="#">Ressources</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 mb-4">
+          <h4>Contact</h4>
+          <p><i class="bi bi-geo-alt"></i> 123 Innovation Street, Tunis</p>
+          <p><i class="bi bi-telephone"></i> +216 XX XXX XXX</p>
+          <p><i class="bi bi-envelope"></i> contact@kernel.tn</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-4 pt-4" style="border-top: 1px solid rgba(255,255,255,0.1);">
+        <p>&copy; 2024 <strong>Kernel</strong> - Tous droits réservés</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
